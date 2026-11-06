@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- A11y Checker 썸네일 자리표시: 대비 검사 패널 -->
+  <rect width="800" height="600" fill="#EEEBE6"/>
+  <g stroke="#0B0B0C" stroke-opacity="0.08">
+    <path d="M200 0v600M400 0v600M600 0v600M0 150h800M0 300h800M0 450h800"/>
+  </g>
+  <circle cx="270" cy="300" r="150" fill="#0B0B0C"/>
+  <path d="M200 302l48 48 96-104" fill="none" stroke="#FF5A1F" stroke-width="22" stroke-linecap="square"/>
+  <rect x="470" y="150" width="250" height="300" rx="4" fill="#FFFFFF" stroke="#DCD8D2"/>
+  <g>
+    <rect x="496" y="178" width="56" height="56" rx="3" fill="#0B0B0C"/>
+    <rect x="566" y="190" width="120" height="12" rx="3" fill="#0B0B0C"/>
+    <rect x="566" y="212" width="80" height="10" rx="3" fill="#A1A1AA"/>
+    <rect x="496" y="254" width="56" height="56" rx="3" fill="#FF5A1F"/>
+    <rect x="566" y="266" width="120" height="12" rx="3" fill="#0B0B0C"/>
+    <rect x="566" y="288" width="96" height="10" rx="3" fill="#A1A1AA"/>
+    <rect x="496" y="330" width="56" height="56" rx="3" fill="#D4D4D8"/>
+    <rect x="566" y="342" width="120" height="12" rx="3" fill="#0B0B0C"/>
+    <rect x="566" y="364" width="64" height="10" rx="3" fill="#A1A1AA"/>
+  </g>
+  <rect x="496" y="404" width="198" height="26" rx="3" fill="#0B0B0C"/>
+</svg>

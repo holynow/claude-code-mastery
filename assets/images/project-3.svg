@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Weatherly 썸네일 자리표시: 날씨 차트 대시보드 -->
+  <defs>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF5A1F" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FF5A1F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#141416"/>
+  <circle cx="640" cy="150" r="70" fill="#FF5A1F"/>
+  <circle cx="640" cy="150" r="104" fill="none" stroke="#FF5A1F" stroke-opacity="0.3" stroke-width="2"/>
+  <rect x="80" y="90" width="230" height="64" rx="3" fill="#F4F4F5"/>
+  <rect x="80" y="172" width="150" height="14" rx="3" fill="#52525B"/>
+  <g stroke="#27272A" stroke-width="1">
+    <path d="M80 300h640M80 370h640M80 440h640M80 510h640"/>
+  </g>
+  <path d="M80 470 C 160 430, 200 360, 280 380 S 420 300, 500 330 S 640 260, 720 290 V510 H80Z" fill="url(#area)"/>
+  <path d="M80 470 C 160 430, 200 360, 280 380 S 420 300, 500 330 S 640 260, 720 290" fill="none" stroke="#FF5A1F" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#F4F4F5">
+    <circle cx="280" cy="380" r="7"/>
+    <circle cx="500" cy="330" r="7"/>
+    <circle cx="720" cy="290" r="7"/>
+  </g>
+  <g fill="#3F3F46">
+    <rect x="80" y="536" width="40" height="10" rx="3"/>
+    <rect x="260" y="536" width="40" height="10" rx="3"/>
+    <rect x="480" y="536" width="40" height="10" rx="3"/>
+    <rect x="680" y="536" width="40" height="10" rx="3"/>
+  </g>
+</svg>

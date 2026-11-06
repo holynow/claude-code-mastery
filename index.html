@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>홍길동 | 프론트엔드 개발자 포트폴리오</title>
+  <meta name="description" content="사용자 경험을 코드로 설계하는 5년 차 프론트엔드 개발자 홍길동의 웹 이력서입니다. 기술 스택, 경력, 프로젝트, 학력과 연락처를 한 페이지에서 확인하세요.">
+  <meta name="author" content="홍길동">
+  <meta name="theme-color" content="#0B0B0C">
+
+  <!-- 공유 미리보기 (Open Graph) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="홍길동 | 프론트엔드 개발자 포트폴리오">
+  <meta property="og:description" content="사용자 경험을 코드로 설계하는 프론트엔드 개발자 홍길동의 웹 이력서">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23FF5A1F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='36' fill='%230B0B0C'%3EG%3C/text%3E%3C/svg%3E">
+
+  <!-- 테마 초기화: 첫 렌더 전에 실행해 깜빡임을 막습니다. 저장값이 없으면 다크가 기본입니다. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var theme = 'dark';
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') theme = saved;
+      } catch (e) {}
+      root.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- 웹폰트: 렌더링을 막지 않도록 비동기로 불러옵니다. -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&display=swap">
+  </noscript>
+
+  <!-- Tailwind CSS (CDN, 버전 고정) -->
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    // 색상은 css/style.css의 테마 토큰(CSS 변수)을 참조합니다.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: 'rgb(var(--c-bg) / <alpha-value>)',
+            surface: 'rgb(var(--c-surface) / <alpha-value>)',
+            'surface-2': 'rgb(var(--c-surface-2) / <alpha-value>)',
+            fg: 'rgb(var(--c-fg) / <alpha-value>)',
+            muted: 'rgb(var(--c-muted) / <alpha-value>)',
+            line: 'rgb(var(--c-line) / <alpha-value>)',
+            accent: 'rgb(var(--c-accent) / <alpha-value>)',
+            'accent-ink': 'rgb(var(--c-accent-ink) / <alpha-value>)',
+            ink: 'rgb(var(--c-ink) / <alpha-value>)'
+          },
+          borderColor: {
+            DEFAULT: 'rgb(var(--c-line))'
+          },
+          fontFamily: {
+            sans: ['"Pretendard Variable"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', '"Apple SD Gothic Neo"', '"Noto Sans KR"', 'sans-serif'],
+            display: ['"Inter Tight"', '"Pretendard Variable"', 'Pretendard', '-apple-system', 'system-ui', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- 커스텀 스타일 (테마 토큰 · 장식 · 컴포넌트) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="font-sans antialiased">
+  <a href="#main" class="skip-link">본문 바로가기</a>
+
+  <!-- ===================================================
+       SECTION: Header
+       =================================================== -->
+  <header id="site-header" class="site-header" data-scrolled="false">
+    <div class="container-x flex h-16 items-center justify-between gap-6 md:h-20">
+      <a href="#home" class="font-display text-xl font-bold tracking-tight md:text-2xl" aria-label="홍길동 홈으로">
+        Gildong<sup class="ml-0.5 text-xs font-semibold">®</sup>
+      </a>
+
+      <nav class="hidden lg:block" aria-label="주요 메뉴">
+        <ul class="flex items-center gap-8 xl:gap-12">
+          <li><a href="#about" class="nav-link" data-nav-link>About</a></li>
+          <li><a href="#skills" class="nav-link" data-nav-link>Skills</a></li>
+          <li><a href="#experience" class="nav-link" data-nav-link>Experience<sup>(03)</sup></a></li>
+          <li><a href="#projects" class="nav-link" data-nav-link>Projects<sup>(04)</sup></a></li>
+          <li><a href="#education" class="nav-link" data-nav-link>Education</a></li>
+          <li><a href="#contact" class="nav-link" data-nav-link>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" class="icon-btn" aria-label="다크 모드" aria-pressed="true" title="라이트 모드로 전환">
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="menu-toggle" type="button" class="icon-btn lg:hidden" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="burger" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 모바일 전체 화면 메뉴 -->
+  <div id="mobile-menu" class="mobile-menu">
+    <nav class="container-x" aria-label="모바일 메뉴">
+      <ul class="border-t border-line">
+        <li><a href="#about" class="mobile-link" data-nav-link><span class="font-mono text-xs font-normal tracking-normal text-muted">01</span>About</a></li>
+        <li><a href="#skills" class="mobile-link" data-nav-link><span class="font-mono text-xs font-normal tracking-normal text-muted">02</span>Skills</a></li>
+        <li><a href="#experience" class="mobile-link" data-nav-link><span class="font-mono text-xs font-normal tracking-normal text-muted">03</span>Experience</a></li>
+        <li><a href="#projects" class="mobile-link" data-nav-link><span class="font-mono text-xs font-normal tracking-normal text-muted">04</span>Projects</a></li>
+        <li><a href="#education" class="mobile-link" data-nav-link><span class="font-mono text-xs font-normal tracking-normal text-muted">05</span>Education</a></li>
+        <li><a href="#contact" class="mobile-link" data-nav-link><span class="font-mono text-xs font-normal tracking-normal text-muted">06</span>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="container-x mt-auto flex flex-wrap items-center justify-between gap-4 text-sm text-muted">
+      <a href="mailto:hello@gildong.dev" class="link-underline text-fg">hello@gildong.dev</a>
+      <span>Seoul, KR</span>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ===================================================
+         SECTION: Hero
+         =================================================== -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <!-- 장식: 그리드 라인 + 교차 마크 -->
+      <div class="hero-grid" aria-hidden="true">
+        <div class="container-x h-full">
+          <div class="hero-grid__cols">
+            <span class="plus" style="--x:0%; --y:var(--header-h)"></span>
+            <span class="plus hidden md:block" style="--x:25%; --y:var(--header-h)"></span>
+            <span class="plus" style="--x:50%; --y:var(--header-h)"></span>
+            <span class="plus hidden md:block" style="--x:75%; --y:var(--header-h)"></span>
+            <span class="plus" style="--x:100%; --y:var(--header-h)"></span>
+            <span class="plus" style="--x:0%; --y:100%"></span>
+            <span class="plus hidden md:block" style="--x:25%; --y:100%"></span>
+            <span class="plus" style="--x:50%; --y:100%"></span>
+            <span class="plus hidden md:block" style="--x:75%; --y:100%"></span>
+            <span class="plus" style="--x:100%; --y:100%"></span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-ghost" data-text="HONG" aria-hidden="true"></div>
+
+      <div class="container-x hero-inner">
+        <!-- 중단: 태그라인 + 대표 프로젝트 카드 -->
+        <div class="hero-mid">
+          <div class="hero-copy reveal">
+            <p class="hero-tagline">I build fast, accessible and thoughtful web experiences that people enjoy using.</p>
+            <p class="mt-4 text-sm leading-relaxed text-muted md:text-base">사용자 경험을 코드로 설계하는 5년 차 프론트엔드 개발자입니다.</p>
+          </div>
+
+          <a href="#projects" class="hero-project reveal" style="--delay:120ms" aria-label="대표 프로젝트 DevLog 보러 가기">
+            <span class="project-thumb block">
+              <img src="assets/images/project-1.svg" alt="" width="800" height="600" decoding="async">
+            </span>
+            <span class="project-meta">
+              <span class="inline-flex items-center gap-2 font-medium tracking-wide"><span class="asterisk" aria-hidden="true"></span>DEVLOG</span>
+              <span class="text-muted">/Web App</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 중앙: 인물 이미지
+             실제 사진으로 교체하려면 assets/images/에 사진(권장 4:5 세로형)을 넣고
+             아래 src와 width/height를 바꾸세요. 예) src="assets/images/profile.jpg" -->
+        <figure class="hero-portrait">
+          <div class="hero-glow" aria-hidden="true"></div>
+          <img src="assets/images/profile.svg" alt="홍길동 프로필 이미지" width="800" height="1000" fetchpriority="high" decoding="async">
+        </figure>
+
+        <!-- 하단: 대형 이름 + Let's Talk 카드 -->
+        <div class="hero-bottom">
+          <div>
+            <p class="font-display text-xl font-semibold tracking-tight md:text-3xl">&copy;2026</p>
+            <h1 id="hero-title" class="hero-name mt-2 md:mt-4">
+              <span class="sr-only">홍길동, 프론트엔드 개발자</span>
+              <span aria-hidden="true">GILDONG</span>
+            </h1>
+          </div>
+
+          <a href="#contact" class="talk-card reveal" style="--delay:200ms" aria-label="Let's Talk - 연락처로 이동">
+            <img src="assets/images/profile.svg" alt="" width="88" height="88" class="talk-card__avatar" decoding="async">
+            <span class="talk-card__body">
+              <span class="text-sm">Let's Talk</span>
+              <span class="mt-auto block text-lg font-bold leading-tight">Hong Gildong</span>
+              <span class="block text-sm">Frontend Developer</span>
+            </span>
+            <span class="talk-card__aside" aria-hidden="true">
+              <span class="asterisk text-lg"></span>
+              <span class="talk-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기술 스택 마키 띠 (장식용, 같은 정보가 Skills 섹션에 있음) -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <ul class="marquee__list">
+          <li>React</li><li><span class="asterisk"></span></li>
+          <li>TypeScript</li><li><span class="asterisk"></span></li>
+          <li>Next.js</li><li><span class="asterisk"></span></li>
+          <li>Tailwind CSS</li><li><span class="asterisk"></span></li>
+          <li>Node.js</li><li><span class="asterisk"></span></li>
+          <li>Web Performance</li><li><span class="asterisk"></span></li>
+          <li>Accessibility</li><li><span class="asterisk"></span></li>
+        </ul>
+        <ul class="marquee__list">
+          <li>React</li><li><span class="asterisk"></span></li>
+          <li>TypeScript</li><li><span class="asterisk"></span></li>
+          <li>Next.js</li><li><span class="asterisk"></span></li>
+          <li>Tailwind CSS</li><li><span class="asterisk"></span></li>
+          <li>Node.js</li><li><span class="asterisk"></span></li>
+          <li>Web Performance</li><li><span class="asterisk"></span></li>
+          <li>Accessibility</li><li><span class="asterisk"></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION: About (01)
+         =================================================== -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container-x">
+        <header class="section-head reveal">
+          <p class="eyebrow">(01) &mdash; About</p>
+          <h2 id="about-title" class="section-title">복잡한 문제를 단순한 경험으로</h2>
+        </header>
+
+        <div class="grid gap-12 md:grid-cols-12 md:gap-8">
+          <aside class="order-2 md:order-1 md:col-span-3 reveal">
+            <dl class="grid gap-6 sm:grid-cols-3 md:sticky md:top-28 md:grid-cols-1">
+              <div>
+                <dt class="eyebrow">Based in</dt>
+                <dd class="mt-2">서울, 대한민국</dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Focus</dt>
+                <dd class="mt-2">Web Frontend<br>UI Engineering</dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Status</dt>
+                <dd class="mt-2 inline-flex items-center gap-2"><span class="dot" aria-hidden="true"></span>새로운 기회에 열려 있음</dd>
+              </div>
+            </dl>
+          </aside>
+
+          <div class="order-1 md:order-2 md:col-span-9">
+            <p class="reveal text-2xl font-semibold leading-snug tracking-tight md:text-[2.5rem] md:leading-[1.3]">
+              5년 차 프론트엔드 개발자로, 복잡한 요구사항을 단순하고 직관적인 인터페이스로 바꾸는 일을 합니다.
+              <span class="text-muted">성능과 접근성을 기본값으로 두고, 디자이너·백엔드 개발자와 같은 언어로 대화하는 개발자를 지향합니다.</span>
+            </p>
+            <div class="reveal mt-10 grid gap-6 leading-relaxed text-muted md:mt-12 md:grid-cols-2 md:gap-8 md:text-lg">
+              <p>웹 퍼블리셔로 시작해 디자인 시스템과 대규모 프론트엔드 아키텍처까지 경험을 넓혀 왔습니다. 화면 하나를 만들 때도 사용자가 마주할 맥락과 속도를 먼저 생각합니다.</p>
+              <p>측정 가능한 개선을 좋아합니다. 로딩 시간, 전환율, 접근성 점수처럼 숫자로 확인할 수 있는 변화를 만들고, 그 과정을 문서로 남겨 팀과 공유합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 핵심 지표 -->
+        <dl class="reveal mt-16 grid grid-cols-2 gap-px border-y border-line bg-line md:mt-24 md:grid-cols-4">
+          <div class="flex flex-col-reverse gap-2 bg-bg px-5 py-8 md:px-6 md:py-10">
+            <dt class="text-sm text-muted">실무 경력 (년)</dt>
+            <dd class="font-display text-5xl font-bold tracking-tight md:text-6xl">5<span class="text-accent-ink">+</span></dd>
+          </div>
+          <div class="flex flex-col-reverse gap-2 bg-bg px-5 py-8 md:px-6 md:py-10">
+            <dt class="text-sm text-muted">출시한 프로젝트</dt>
+            <dd class="font-display text-5xl font-bold tracking-tight md:text-6xl">30<span class="text-accent-ink">+</span></dd>
+          </div>
+          <div class="flex flex-col-reverse gap-2 bg-bg px-5 py-8 md:px-6 md:py-10">
+            <dt class="text-sm text-muted">평균 로딩 시간 단축</dt>
+            <dd class="font-display text-5xl font-bold tracking-tight md:text-6xl">40<span class="text-accent-ink">%</span></dd>
+          </div>
+          <div class="flex flex-col-reverse gap-2 bg-bg px-5 py-8 md:px-6 md:py-10">
+            <dt class="text-sm text-muted">오픈소스 기여</dt>
+            <dd class="font-display text-5xl font-bold tracking-tight md:text-6xl">12</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION: Skills (02)
+         =================================================== -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <div class="container-x">
+        <header class="section-head reveal">
+          <p class="eyebrow">(02) &mdash; Skills</p>
+          <h2 id="skills-title" class="section-title">문제에 맞는 도구를 고릅니다</h2>
+        </header>
+
+        <div class="rows">
+          <div class="row reveal">
+            <div>
+              <h3 class="row-title flex items-baseline gap-3 text-xl font-semibold md:text-2xl"><span class="font-mono text-xs font-normal text-muted">01</span>Frontend</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">사용자와 맞닿는 화면을 설계하고 구현합니다.</p>
+            </div>
+            <ul class="flex flex-wrap content-start gap-2 md:gap-3">
+              <li class="chip chip--core">React</li>
+              <li class="chip chip--core">TypeScript</li>
+              <li class="chip chip--core">Next.js</li>
+              <li class="chip">JavaScript (ES6+)</li>
+              <li class="chip">HTML5</li>
+              <li class="chip">CSS3</li>
+              <li class="chip">Tailwind CSS</li>
+              <li class="chip">Zustand</li>
+              <li class="chip">React Query</li>
+            </ul>
+          </div>
+          <div class="row reveal">
+            <div>
+              <h3 class="row-title flex items-baseline gap-3 text-xl font-semibold md:text-2xl"><span class="font-mono text-xs font-normal text-muted">02</span>Backend</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">프론트엔드에 필요한 API와 데이터를 다룹니다.</p>
+            </div>
+            <ul class="flex flex-wrap content-start gap-2 md:gap-3">
+              <li class="chip chip--core">Node.js</li>
+              <li class="chip">Express</li>
+              <li class="chip">REST API</li>
+              <li class="chip">GraphQL</li>
+              <li class="chip">PostgreSQL</li>
+            </ul>
+          </div>
+          <div class="row reveal">
+            <div>
+              <h3 class="row-title flex items-baseline gap-3 text-xl font-semibold md:text-2xl"><span class="font-mono text-xs font-normal text-muted">03</span>Tools &amp; Infra</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">협업, 테스트, 배포까지 흐름을 자동화합니다.</p>
+            </div>
+            <ul class="flex flex-wrap content-start gap-2 md:gap-3">
+              <li class="chip chip--core">Git · GitHub</li>
+              <li class="chip">Vite</li>
+              <li class="chip">Jest</li>
+              <li class="chip">Storybook</li>
+              <li class="chip">Figma</li>
+              <li class="chip">AWS</li>
+              <li class="chip">Vercel</li>
+            </ul>
+          </div>
+        </div>
+        <p class="mt-6 inline-flex items-center gap-2 text-sm text-muted">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>주력 기술
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION: Experience (03)
+         =================================================== -->
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <div class="container-x">
+        <header class="section-head reveal">
+          <p class="eyebrow">(03) &mdash; Experience</p>
+          <h2 id="experience-title" class="section-title">만들어 온 시간들</h2>
+        </header>
+
+        <ol class="rows">
+          <li class="row reveal">
+            <div class="flex flex-wrap items-center gap-3 md:flex-col md:items-start">
+              <p class="font-mono text-sm text-muted">2023.03 &mdash; 현재</p>
+              <span class="badge"><span class="dot" aria-hidden="true"></span>재직 중</span>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h3 class="row-title text-xl font-semibold md:text-2xl">(주)테크스타트</h3>
+                <p class="text-muted">시니어 프론트엔드 개발자</p>
+              </div>
+              <ul class="bullets mt-5 space-y-2 leading-relaxed text-muted">
+                <li>사내 디자인 시스템을 설계하고 공통 컴포넌트 60여 개를 구축해 화면 개발 기간을 30% 줄였습니다.</li>
+                <li>이미지 최적화와 코드 스플리팅으로 메인 페이지 LCP를 3.8초에서 1.6초로 개선했습니다.</li>
+                <li>코드 리뷰 가이드를 만들고 주니어 개발자 3명의 온보딩과 멘토링을 맡았습니다.</li>
+              </ul>
+              <ul class="mt-6 flex flex-wrap gap-2">
+                <li class="chip chip--sm">React</li>
+                <li class="chip chip--sm">TypeScript</li>
+                <li class="chip chip--sm">Next.js</li>
+                <li class="chip chip--sm">Storybook</li>
+              </ul>
+            </div>
+          </li>
+          <li class="row reveal">
+            <div>
+              <p class="font-mono text-sm text-muted">2021.01 &mdash; 2023.02</p>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h3 class="row-title text-xl font-semibold md:text-2xl">웹솔루션즈</h3>
+                <p class="text-muted">프론트엔드 개발자</p>
+              </div>
+              <ul class="bullets mt-5 space-y-2 leading-relaxed text-muted">
+                <li>레거시 jQuery 관리자 대시보드를 React로 전환하고 화면 50여 개를 리뉴얼했습니다.</li>
+                <li>웹 접근성 지침(WCAG 2.1 AA)을 적용해 공공기관 접근성 인증을 획득했습니다.</li>
+                <li>단위·통합 테스트를 도입해 테스트 커버리지를 30%에서 75%로 높였습니다.</li>
+              </ul>
+              <ul class="mt-6 flex flex-wrap gap-2">
+                <li class="chip chip--sm">React</li>
+                <li class="chip chip--sm">Redux</li>
+                <li class="chip chip--sm">Jest</li>
+              </ul>
+            </div>
+          </li>
+          <li class="row reveal">
+            <div>
+              <p class="font-mono text-sm text-muted">2019.07 &mdash; 2020.12</p>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h3 class="row-title text-xl font-semibold md:text-2xl">디지털에이전시</h3>
+                <p class="text-muted">웹 퍼블리셔</p>
+              </div>
+              <ul class="bullets mt-5 space-y-2 leading-relaxed text-muted">
+                <li>기업 홍보 사이트와 캠페인 페이지 등 반응형 웹사이트 20여 개를 구축했습니다.</li>
+                <li>크로스 브라우징 체크리스트를 만들어 QA 이슈를 절반 가까이 줄였습니다.</li>
+              </ul>
+              <ul class="mt-6 flex flex-wrap gap-2">
+                <li class="chip chip--sm">HTML5</li>
+                <li class="chip chip--sm">CSS3</li>
+                <li class="chip chip--sm">JavaScript</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION: Projects (04)
+         =================================================== -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="container-x">
+        <header class="section-head reveal">
+          <p class="eyebrow">(04) &mdash; Projects</p>
+          <h2 id="projects-title" class="section-title">직접 설계하고 만든 것들</h2>
+        </header>
+
+        <div class="grid gap-6 md:grid-cols-2 md:gap-8">
+          <!-- 프로젝트 1 -->
+          <article class="project-card reveal">
+            <div class="project-thumb">
+              <img src="assets/images/project-1.svg" alt="DevLog 블로그 플랫폼 화면 미리보기" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <div class="project-meta">
+              <span class="inline-flex items-center gap-2 font-medium tracking-wide"><span class="asterisk" aria-hidden="true"></span>DEVLOG</span>
+              <span class="text-muted">/Web App</span>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold md:text-2xl">개발자를 위한 블로그 플랫폼</h3>
+            <p class="mt-3 leading-relaxed text-muted">MDX 기반 글쓰기와 코드 하이라이팅, 시리즈 묶음을 지원하는 블로그입니다. 정적 생성으로 Lighthouse 성능 100점을 달성했습니다.</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--sm">Next.js</li>
+              <li class="chip chip--sm">MDX</li>
+              <li class="chip chip--sm">Vercel</li>
+            </ul>
+            <div class="mt-auto flex flex-wrap gap-3 pt-6">
+              <a href="https://github.com/" class="link-btn" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> - DevLog 저장소 (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+              <a href="https://example.com/" class="link-btn" target="_blank" rel="noopener noreferrer">Live Demo<span class="sr-only"> - DevLog (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 프로젝트 2 -->
+          <article class="project-card reveal" style="--delay:100ms">
+            <div class="project-thumb">
+              <img src="assets/images/project-2.svg" alt="TaskFlow 칸반 보드 화면 미리보기" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <div class="project-meta">
+              <span class="inline-flex items-center gap-2 font-medium tracking-wide"><span class="asterisk" aria-hidden="true"></span>TASKFLOW</span>
+              <span class="text-muted">/Product</span>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold md:text-2xl">실시간 협업 칸반 보드</h3>
+            <p class="mt-3 leading-relaxed text-muted">WebSocket으로 여러 사용자의 변경 사항을 실시간 동기화하는 작업 관리 도구입니다. 드래그 앤 드롭과 낙관적 업데이트를 구현했습니다.</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--sm">React</li>
+              <li class="chip chip--sm">WebSocket</li>
+              <li class="chip chip--sm">Node.js</li>
+            </ul>
+            <div class="mt-auto flex flex-wrap gap-3 pt-6">
+              <a href="https://github.com/" class="link-btn" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> - TaskFlow 저장소 (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+              <a href="https://example.com/" class="link-btn" target="_blank" rel="noopener noreferrer">Live Demo<span class="sr-only"> - TaskFlow (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 프로젝트 3 -->
+          <article class="project-card reveal">
+            <div class="project-thumb">
+              <img src="assets/images/project-3.svg" alt="Weatherly 날씨 대시보드 화면 미리보기" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <div class="project-meta">
+              <span class="inline-flex items-center gap-2 font-medium tracking-wide"><span class="asterisk" aria-hidden="true"></span>WEATHERLY</span>
+              <span class="text-muted">/Dashboard</span>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold md:text-2xl">위치 기반 날씨 대시보드</h3>
+            <p class="mt-3 leading-relaxed text-muted">현재 위치의 날씨와 시간대별 예보를 차트로 보여주는 대시보드입니다. 프레임워크 없이 Vanilla JS로 상태 관리와 렌더링을 구현했습니다.</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--sm">Vanilla JS</li>
+              <li class="chip chip--sm">Chart.js</li>
+              <li class="chip chip--sm">OpenWeather API</li>
+            </ul>
+            <div class="mt-auto flex flex-wrap gap-3 pt-6">
+              <a href="https://github.com/" class="link-btn" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> - Weatherly 저장소 (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+              <a href="https://example.com/" class="link-btn" target="_blank" rel="noopener noreferrer">Live Demo<span class="sr-only"> - Weatherly (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 프로젝트 4 -->
+          <article class="project-card reveal" style="--delay:100ms">
+            <div class="project-thumb">
+              <img src="assets/images/project-4.svg" alt="A11y Checker 확장 프로그램 화면 미리보기" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <div class="project-meta">
+              <span class="inline-flex items-center gap-2 font-medium tracking-wide"><span class="asterisk" aria-hidden="true"></span>A11Y CHECKER</span>
+              <span class="text-muted">/Open Source</span>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold md:text-2xl">웹 접근성 점검 크롬 확장</h3>
+            <p class="mt-3 leading-relaxed text-muted">현재 페이지의 색 대비, 대체 텍스트, 제목 구조를 검사해 개선 방법을 알려주는 오픈소스 확장 프로그램입니다.</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--sm">TypeScript</li>
+              <li class="chip chip--sm">Chrome API</li>
+              <li class="chip chip--sm">axe-core</li>
+            </ul>
+            <div class="mt-auto flex flex-wrap gap-3 pt-6">
+              <a href="https://github.com/" class="link-btn" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> - A11y Checker 저장소 (새 창)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION: Education (05)
+         =================================================== -->
+    <section id="education" class="section" aria-labelledby="education-title">
+      <div class="container-x">
+        <header class="section-head reveal">
+          <p class="eyebrow">(05) &mdash; Education</p>
+          <h2 id="education-title" class="section-title">배움의 기록</h2>
+        </header>
+
+        <ol class="rows">
+          <li class="row reveal">
+            <div class="flex flex-wrap items-center gap-3 md:flex-col md:items-start">
+              <p class="font-mono text-sm text-muted">2015.03 &mdash; 2019.02</p>
+              <span class="badge">학력</span>
+            </div>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="row-title text-xl font-semibold md:text-2xl">한국대학교</h3>
+              <p class="text-muted">컴퓨터공학과 학사</p>
+            </div>
+          </li>
+          <li class="row reveal">
+            <div class="flex flex-wrap items-center gap-3 md:flex-col md:items-start">
+              <p class="font-mono text-sm text-muted">2022.05</p>
+              <span class="badge">자격증</span>
+            </div>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="row-title text-xl font-semibold md:text-2xl">AWS Certified Cloud Practitioner</h3>
+              <p class="text-muted">Amazon Web Services</p>
+            </div>
+          </li>
+          <li class="row reveal">
+            <div class="flex flex-wrap items-center gap-3 md:flex-col md:items-start">
+              <p class="font-mono text-sm text-muted">2019.08</p>
+              <span class="badge">자격증</span>
+            </div>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="row-title text-xl font-semibold md:text-2xl">정보처리기사</h3>
+              <p class="text-muted">한국산업인력공단</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION: Contact (06)
+         =================================================== -->
+    <section id="contact" class="section section--accent" aria-labelledby="contact-title">
+      <div class="container-x">
+        <header class="section-head section-head--stack reveal">
+          <p class="eyebrow">(06) &mdash; Contact</p>
+          <h2 id="contact-title" class="contact-title">
+            <span class="block">Let's work</span>
+            <span class="block">together</span>
+          </h2>
+        </header>
+
+        <div class="grid gap-12 md:grid-cols-12 md:gap-8">
+          <div class="reveal md:col-span-3">
+            <p class="inline-flex items-center gap-2 font-medium"><span class="dot" aria-hidden="true"></span>새로운 기회에 열려 있습니다</p>
+          </div>
+          <div class="reveal md:col-span-9">
+            <p class="max-w-2xl text-lg leading-relaxed md:text-xl">새로운 프로젝트, 협업 제안, 가벼운 커피챗 모두 환영합니다. 메일을 보내 주시면 영업일 기준 하루 안에 답장드리겠습니다.</p>
+            <a href="mailto:hello@gildong.dev" class="email-link mt-8 text-2xl sm:text-4xl md:mt-10 md:text-5xl lg:text-6xl">
+              hello@gildong.dev
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+            <ul class="mt-10 grid gap-3 sm:grid-cols-3 md:mt-12">
+              <li>
+                <a href="https://github.com/" class="social-btn" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (새 창)</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/" class="social-btn" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (새 창)</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://velog.io/" class="social-btn" target="_blank" rel="noopener noreferrer">Blog<span class="sr-only"> (새 창)</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================
+       SECTION: Footer
+       =================================================== -->
+  <footer class="site-footer">
+    <div class="container-x flex flex-col gap-4 py-8 text-sm text-muted md:flex-row md:items-center md:justify-between">
+      <p>&copy; <span data-year>2026</span> Hong Gildong. All rights reserved.</p>
+      <p>HTML · Tailwind CSS · Vanilla JS</p>
+      <a href="#home" class="link-underline inline-flex w-fit items-center gap-2 text-fg">맨 위로 <span aria-hidden="true">&uarr;</span></a>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

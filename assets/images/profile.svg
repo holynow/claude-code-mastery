@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <!-- 프로필 자리표시 이미지: 실제 사진(profile.jpg 등)으로 교체하세요. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B9300B"/>
+      <stop offset="0.55" stop-color="#FF5A1F"/>
+      <stop offset="1" stop-color="#FF8A4C"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B1A13"/>
+      <stop offset="1" stop-color="#0F0907"/>
+    </linearGradient>
+    <radialGradient id="rim" cx="0.72" cy="0.32" r="0.6">
+      <stop offset="0" stop-color="#FFB08A" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FFB08A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="light" cx="0.5" cy="0.35" r="0.6">
+      <stop offset="0" stop-color="#FFD2B8" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#FFD2B8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#light)"/>
+  <g stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1">
+    <path d="M200 0v1000M400 0v1000M600 0v1000M0 250h800M0 500h800M0 750h800"/>
+  </g>
+  <g fill="url(#body)">
+    <ellipse cx="400" cy="370" rx="138" ry="168"/>
+    <path d="M345 500c3 60-3 100-27 128C200 650 70 730 48 1000h704c-22-270-152-350-270-372-24-28-30-68-27-128z"/>
+  </g>
+  <ellipse cx="400" cy="370" rx="138" ry="168" fill="url(#rim)"/>
+</svg>
