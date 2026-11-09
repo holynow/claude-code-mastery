@@ -1,0 +1,20 @@
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+
+# 에디터/IDE 설정
+.vscode/
+.idea/
+*.swp
+
+# Claude Code 로컬 설정 (개인별 설정이므로 공유하지 않음)
+.claude/settings.local.json
+
+# 의존성 및 빌드 산출물 (현재는 없지만 추후 대비)
+node_modules/
+dist/
+
+# 로그 및 환경 변수
+*.log
+.env
+.env.*
